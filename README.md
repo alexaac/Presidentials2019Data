@@ -36,3 +36,7 @@ pentru elementele cu probleme, apoi din nou agregare și join cu Unitate_adminis
 - Adăugare camp pv_siruta in care sunt trecute codurile pe care le au poligoanele cu probleme în pv_RO_PRSD_FINAL
 - Rezultă 3186 rânduri populate complet
 - QA pe https://prezenta.bec.ro/prezidentiale24112019/romania-precincts
+
+Detalii despre proces:
+https://blog.maptheclouds.com/ro/tutoriale/perspectiva-spatiala-alegeri
+
