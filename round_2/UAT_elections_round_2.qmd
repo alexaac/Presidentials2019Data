@@ -1,0 +1,90 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis version="3.8.3-Zanzibar">
+  <identifier>Turul 2</identifier>
+  <parentidentifier>Alegeri Prezidentiale Romania</parentidentifier>
+  <language>ROU</language>
+  <type>dataset</type>
+  <title>Rezultate alegeri prezidentiale Romania turul 2 la nivel UAT</title>
+  <abstract>Surse de date:
+- Geometriile au fost create de către ANCPI și publicate pe Geoportalul INSPIRE al României
+ și pe Portalul de date deschise al Guvernului României. 
+- Tabelul de atribute a fost completat cu date publicate liber de Biroul Electoral Central pe Prezenta BEC
+- Datele se pot reutiliza sub termenii licenței pentru o Guvernare Deschisă. 
+
+Fișiere utilizate:
+- Unitățile administrative tip poligon, din layer-ul Unitate_administrativa_UAT
+ de pe http://geoportal.ancpi.ro/geoportal/catalog/main/home.page 
+- Rezultate finale alegeri din turul 2, 24 noiembrie 2019, din fișierul pv_RO_PRSD_FINAL.csv,
+ de pe https://prezenta.bec.ro/
+
+Autor:
+Cristina Alexa
+
+Sistem de Coordonate:
+EPSG:3844 - Pulkovo 1942(58) / Stereo70 - Projected
+(https://europe.foss4g.org/2014/slides/Daniel%20Urda%20-%20PROJ4%20Issues.The%20case%20of%20Romania2.pdf)
+
+Procesare in QGIS 3.8.3-Zanzibar:
+- Agregarea datelor din pv_RO_PRSD_FINAL pe Siruta, în Spatialite
+- Join între Unitate_administrativa_UAT și pv_RO_PRSD_FINAL pe Siruta = natCode
+- Constatare elemente fără date electorale în urma join-ului
+    În pv_RO_PRSD_FINAL, sectoarele Bucureștiului au Siruta 179132, orașul Băneasa din Constanța are Siruta 63171
+    În Unitate_administrativa_UAT:
+        BUCUREŞTI SECTORUL 1: 179141
+        BUCUREŞTI SECTORUL 2: 179150
+        BUCUREŞTI SECTORUL 3: 179169
+        BUCUREŞTI SECTORUL 4: 179178
+        BUCUREŞTI SECTORUL 5: 179187
+        BUCUREŞTI SECTORUL 6: 179196
+        BĂNEASA: 61069
+- Reparare lipsă date prin tabel intermediar pv_RO_UAT_MOD, cu câmp Siruta_Mod în care updatez Siruta 
+pentru elementele cu probleme, apoi din nou agregare și join cu Unitate_administrativa_UAT
+- Adăugare camp pv_siruta in care sunt trecute codurile pe care le au poligoanele cu probleme în pv_RO_PRSD_FINAL
+- Rezultă 3186 rânduri populate complet
+- QA pe https://prezenta.bec.ro/prezidentiale24112019/romania-precincts</abstract>
+  <keywords vocabulary="gmd:topicCategory">
+    <keyword>Boundaries</keyword>
+    <keyword>Intelligence Military</keyword>
+    <keyword>Society</keyword>
+  </keywords>
+  <contact>
+    <name>Alexa Cristina</name>
+    <organization></organization>
+    <position></position>
+    <voice></voice>
+    <fax></fax>
+    <email></email>
+    <role>distributor</role>
+  </contact>
+  <links>
+    <link url="http://geoportal.ancpi.ro/geoportal/catalog/main/home.page" size="" description="" name="Geoportal ANCPI" type="information" format="" mimeType=""/>
+    <link url="https://prezenta.bec.ro/" size="" description="" name="Prezenta BEC" type="information" format="" mimeType=""/>
+  </links>
+  <fees></fees>
+  <rights>Date realizate de ANCPI</rights>
+  <rights>Date realizate de BEC</rights>
+  <rights>Licența pentru o Guvenare Deschisă</rights>
+  <license>Open Data Commons Attribution License</license>
+  <encoding></encoding>
+  <crs>
+    <spatialrefsys>
+      <proj4>+proj=sterea +lat_0=46 +lon_0=25 +k=0.99975 +x_0=500000 +y_0=500000 +ellps=krass +towgs84=2.329,-147.042,-92.08,0.309,-0.325,-0.497,5.69 +units=m +no_defs</proj4>
+      <srsid>27265</srsid>
+      <srid>3844</srid>
+      <authid>EPSG:3844</authid>
+      <description>Pulkovo 1942(58) / Stereo70</description>
+      <projectionacronym>sterea</projectionacronym>
+      <ellipsoidacronym>krass</ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </crs>
+  <extent>
+    <spatial maxx="870651.94990000000689179" minx="134106.26920000000973232" dimensions="2" minz="0" crs="EPSG:3844" maxz="0" miny="235541.25990000000456348" maxy="753224.54989999998360872"/>
+    <temporal>
+      <period>
+        <start></start>
+        <end></end>
+      </period>
+    </temporal>
+  </extent>
+</qgis>
