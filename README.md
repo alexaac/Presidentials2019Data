@@ -7,7 +7,9 @@
 
 Fișiere utilizate:
 - Unitățile administrative tip poligon, din layer-ul Unitate_administrativa_UAT
- de pe http://geoportal.ancpi.ro/geoportal/catalog/main/home.page 
+ de pe http://geoportal.ancpi.ro/geoportal/catalog/main/home.page
+- Rezultate finale alegeri din turul 1, 10 noiembrie 2019, din fișierul pv_RO_PRSD_FINAL.csv,
+ de pe https://prezenta.bec.ro/
 - Rezultate finale alegeri din turul 2, 24 noiembrie 2019, din fișierul pv_RO_PRSD_FINAL.csv,
  de pe https://prezenta.bec.ro/
 
@@ -15,8 +17,9 @@ Autor:
 Cristina Alexa
 
 Sistem de Coordonate:
-EPSG:3844 - Pulkovo 1942(58) / Stereo70 - Projected
+- EPSG:3844 - Pulkovo 1942(58) / Stereo70 - Projected
 (https://europe.foss4g.org/2014/slides/Daniel%20Urda%20-%20PROJ4%20Issues.The%20case%20of%20Romania2.pdf)
+- EPSG:4326 - WGS 84 - Geographic
 
 Procesare in QGIS 3.8.3-Zanzibar:
 - Agregarea datelor din pv_RO_PRSD_FINAL pe Siruta, în Spatialite
@@ -35,7 +38,8 @@ Procesare in QGIS 3.8.3-Zanzibar:
 pentru elementele cu probleme, apoi din nou agregare și join cu Unitate_administrativa_UAT
 - Adăugare camp pv_siruta in care sunt trecute codurile pe care le au poligoanele cu probleme în pv_RO_PRSD_FINAL
 - Rezultă 3186 rânduri populate complet
-- QA pe https://prezenta.bec.ro/prezidentiale24112019/romania-precincts
+- QA round 1 pe https://prezenta.bec.ro/prezidentiale10112019/romania-precincts
+- QA round 2 pe https://prezenta.bec.ro/prezidentiale24112019/romania-precincts
 
 Detalii despre proces:
 https://blog.maptheclouds.com/ro/tutoriale/perspectiva-spatiala-alegeri
