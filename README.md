@@ -9,9 +9,9 @@ Fișiere utilizate:
 - Unitățile administrative tip poligon, din layer-ul Unitate_administrativa_UAT
  de pe http://geoportal.ancpi.ro/geoportal/catalog/main/home.page
 - Rezultate finale alegeri din turul 1, 10 noiembrie 2019, din fișierul pv_RO_PRSD_FINAL.csv,
- de pe https://prezenta.bec.ro/
+ de pe https://prezenta.bec.ro/prezidentiale10112019/romania-pv-final
 - Rezultate finale alegeri din turul 2, 24 noiembrie 2019, din fișierul pv_RO_PRSD_FINAL.csv,
- de pe https://prezenta.bec.ro/
+ de pe https://prezenta.bec.ro/prezidentiale24112019/romania-pv-final
 
 Autor:
 Cristina Alexa
