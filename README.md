@@ -1,9 +1,9 @@
 ## Alegerile Prezidențiale din 2019 în România - Date geografice la nivel de UAT
 
-- Geometriile au fost create de către ANCPI și publicate pe Geoportalul INSPIRE al României
- și pe Portalul de date deschise al Guvernului României. 
-- Tabelul de atribute a fost completat cu date publicate liber de Biroul Electoral Central pe Prezenta BEC
-- Datele se pot reutiliza sub termenii licenței pentru o Guvernare Deschisă. 
+- Geometriile au fost create de către ANCPI și publicate pe [Geoportalul INSPIRE al României](http://geoportal.gov.ro)
+ și pe [Portalul de date deschise al Guvernului României](http://geoportal.gov.ro).
+- Tabelul de atribute a fost completat cu date publicate liber de Biroul Electoral Central pe [Prezenta BEC](http://prezenta.bec.ro).
+- Datele se pot reutiliza sub termenii [Licenței pentru o Guvernare Deschisă](http://data.gov.ro/base/images/logoinst/OGL-ROU-1.0.pdf).
 
 Fișiere utilizate:
 - Unitățile administrative tip poligon, din layer-ul Unitate_administrativa_UAT
