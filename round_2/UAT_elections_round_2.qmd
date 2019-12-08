@@ -57,14 +57,13 @@ pentru elementele cu probleme, apoi din nou agregare și join cu Unitate_adminis
     <role>distributor</role>
   </contact>
   <links>
-    <link url="http://geoportal.ancpi.ro/geoportal/catalog/main/home.page" size="" description="" name="Geoportal ANCPI" type="information" format="" mimeType=""/>
-    <link url="https://prezenta.bec.ro/" size="" description="" name="Prezenta BEC" type="information" format="" mimeType=""/>
+    <link format="" url="http://geoportal.ancpi.ro/geoportal/catalog/main/home.page" name="Geoportal ANCPI" size="" description="" type="information" mimeType=""/>
+    <link format="" url="https://prezenta.bec.ro/" name="Prezenta BEC" size="" description="" type="information" mimeType=""/>
   </links>
   <fees></fees>
   <rights>Date realizate de ANCPI</rights>
   <rights>Date realizate de BEC</rights>
-  <rights>Licența pentru o Guvenare Deschisă</rights>
-  <license>Open Data Commons Attribution License</license>
+  <license>Creative Commons Attribution 4.0</license>
   <encoding></encoding>
   <crs>
     <spatialrefsys>
@@ -79,7 +78,7 @@ pentru elementele cu probleme, apoi din nou agregare și join cu Unitate_adminis
     </spatialrefsys>
   </crs>
   <extent>
-    <spatial maxx="870651.94990000000689179" minx="134106.26920000000973232" dimensions="2" minz="0" crs="EPSG:3844" maxz="0" miny="235541.25990000000456348" maxy="753224.54989999998360872"/>
+    <spatial dimensions="2" crs="EPSG:3844" maxx="870651.94990000000689179" maxz="0" minz="0" miny="235541.25990000000456348" maxy="753224.54989999998360872" minx="134106.26920000000973232"/>
     <temporal>
       <period>
         <start></start>
