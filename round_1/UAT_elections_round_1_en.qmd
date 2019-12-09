@@ -1,0 +1,101 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis version="3.8.3-Zanzibar">
+  <identifier>Round 1</identifier>
+  <parentidentifier>Presidential Elections Romania</parentidentifier>
+  <language>ROU</language>
+  <type>dataset</type>
+  <title>Romania 2019 Presidential Elections - Geographic data at UAT level, Round 1</title>
+  <abstract>
+
+Data sources:
+- The geometries were created by ANCPI and published on Geoportalul INSPIRE al României and on Portalul de date deschise al Guvernului României. 
+- The attribute table was complemented with open data from Biroul Electoral Central on Prezenta BEC.
+- The data can be reused under the Open Government License.
+
+Author: Cristina Alexa
+Date: 2019-12-07
+
+Files:
+- Administrative units of polygon type, from the Unitate_administrativa_UAT layer, from http://geoportal.ancpi.ro/portal/apps/webappviewer/index.html?id=faeba2d173374445b1f13512bd477bb2
+- Final elections results from the second round, 10th of November 2019, from the file pv_RO_PRSD_FINAL.csv, from https://prezenta.bec.ro/prezidentiale24112019/romania-pv-final
+
+Coordinate Systems:
+- EPSG:3844 - Pulkovo 1942(58) / Stereo70 - Projected
+- EPSG:4326 - WGS 84 - Geographic
+
+Methods:
+  Data processing was made in QGIS 3.8.3-Zanzibar and Spatialite (in QGIS).
+  Geographic data and elections data were downloaded, then we proceeded to the aggregation of the elections results at UAT level (because they were at precinct level), in order to join the two data sets.
+  The data grouping from pv_RO_PRSD_FINAL was made on the Siruta field, in Spatialite, and a temporary view was created, pv_RO_UAT_VIEW.
+  Next, it was made the Join between Unitate_administrativa_UAT and pv_RO_UAT_VIEW, on Siruta = natCode.
+  There have resulted records without electoral data after the Join, the inspecion of the causes followed up.
+  It was found that:
+    In pv_RO_PRSD_FINAL, Bucharest sectors have Siruta 179132, Băneasa city from Constanța has Siruta 63171
+    In Unitate_administrativa_UAT:
+      BUCUREŞTI SECTORUL 1: 179141
+      BUCUREŞTI SECTORUL 2: 179150
+      BUCUREŞTI SECTORUL 3: 179169
+      BUCUREŞTI SECTORUL 4: 179178
+      BUCUREŞTI SECTORUL 5: 179187
+      BUCUREŞTI SECTORUL 6: 179196
+      BĂNEASA: 61069
+  The issue was solved by using an intermediate field, Siruta_Mod. An intermediary table was created from pv_RO_UAT_VIEW,  pv_RO_UAT_MOD, a field Siruta_Mod was added and updated from Siruta, but for Bucharest and Băneasa the codes above were inserted.
+  The Join with Unitate_administrativa_UAT was made again, this time with pv_RO_UAT_MOD, and there have resulted 3186 completely populated rows.
+
+Results:
+  The resulting file from the Join was exported as ESRI shapefile, named UAT_elections_round_1, with EPSG 3844 and UTF8 encoding.
+  Finally, a new field, pv_siruta was added, in which there are recorded the original Siruta codes for București and Băneasa from pv_RO_PRSD_FINAL.
+  The results were checked by queries in Spatialite and cross-checking with the final results and the UAT level results from https://prezenta.bec.ro.
+
+Other considerations:
+  The aggregation of the electoral data at Siruta (natCode) level was chosen because it followed the structure from the geographic file from ANCPI, and the use of a greater detail level was intended, from where the data could be generalized, if needed.
+  The aggregation at 'Siruta' level could be used in a similar way like in the electoral data file, using the Bucharest sectors together, dissolving the corresponding geometries from the geographic file.
+  The aggregation at 'Cod birou electoral' level could also be used, and them we would have dissolved the geometries at county level, and keep the Bucharest sectors undissolved.
+  We could get to the two generalization levels from above starting from the UAT_elections_round_1 file, too.
+  </abstract>
+  <keywords vocabulary="gmd:topicCategory">
+    <keyword>Boundaries</keyword>
+    <keyword>Intelligence Military</keyword>
+    <keyword>Society</keyword>
+  </keywords>
+  <contact>
+    <name>Alexa Cristina</name>
+    <organization></organization>
+    <position></position>
+    <voice></voice>
+    <fax></fax>
+    <email></email>
+    <role>distributor</role>
+  </contact>
+  <links>
+    <link format="" url="http://geoportal.ancpi.ro/geoportal/catalog/main/home.page" name="Geoportal ANCPI" size="" description="" type="information" mimeType=""/>
+    <link format="" url="https://prezenta.bec.ro/" name="Prezenta BEC" size="" description="" type="information" mimeType=""/>
+  </links>
+  <fees></fees>
+  <rights>Date realizate de ANCPI</rights>
+  <rights>Date realizate de BEC</rights>
+  <rights>Licența pentru o Guvenare Deschisă</rights>
+  <license>Creative Commons Attribution 4.0</license>
+  <encoding></encoding>
+  <crs>
+    <spatialrefsys>
+      <proj4>+proj=sterea +lat_0=46 +lon_0=25 +k=0.99975 +x_0=500000 +y_0=500000 +ellps=krass +towgs84=2.329,-147.042,-92.08,0.309,-0.325,-0.497,5.69 +units=m +no_defs</proj4>
+      <srsid>27265</srsid>
+      <srid>3844</srid>
+      <authid>EPSG:3844</authid>
+      <description>Pulkovo 1942(58) / Stereo70</description>
+      <projectionacronym>sterea</projectionacronym>
+      <ellipsoidacronym>krass</ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </crs>
+  <extent>
+    <spatial dimensions="2" crs="EPSG:3844" maxx="870675.32620000001043081" maxz="0" minz="0" miny="235511.51379999998607673" maxy="753193.36759999999776483" minx="134131.84779999998863786"/>
+    <temporal>
+      <period>
+        <start></start>
+        <end></end>
+      </period>
+    </temporal>
+  </extent>
+</qgis>

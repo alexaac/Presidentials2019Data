@@ -4,34 +4,31 @@
   <parentidentifier>Alegeri Prezidentiale Romania</parentidentifier>
   <language>ROU</language>
   <type>dataset</type>
-  <title>Rezultate alegeri prezidentiale Romania turul 2 la nivel UAT</title>
+  <title>Alegerile Prezidențiale din 2019 în România - Date geografice la nivel de UAT, Turul 2</title>
   <abstract>Surse de date:
 - Geometriile au fost create de către ANCPI și publicate pe Geoportalul INSPIRE al României
  și pe Portalul de date deschise al Guvernului României. 
-- Tabelul de atribute a fost completat cu date publicate liber de Biroul Electoral Central pe Prezenta BEC
+- Tabelul de atribute a fost completat cu date publicate liber de Biroul Electoral Central pe Prezenta BEC.
 - Datele se pot reutiliza sub termenii licenței pentru o Guvernare Deschisă. 
 
-Fișiere utilizate:
-- Unitățile administrative tip poligon, din layer-ul Unitate_administrativa_UAT
- de pe http://geoportal.ancpi.ro/portal/apps/webappviewer/index.html?id=faeba2d173374445b1f13512bd477bb2
-- Rezultate finale alegeri din turul 2, 24 noiembrie 2019, din fișierul pv_RO_PRSD_FINAL.csv,
- de pe https://prezenta.bec.ro/prezidentiale24112019/romania-pv-final
+Autor: Cristina Alexa
+Data: 2019-12-07
 
-Autor:
-Cristina Alexa
+Fișiere:
+- Unitățile administrative tip poligon, din layer-ul Unitate_administrativa_UAT de pe http://geoportal.ancpi.ro/portal/apps/webappviewer/index.html?id=faeba2d173374445b1f13512bd477bb2.
+- Rezultate finale alegeri din turul 2, 24 noiembrie 2019, din fișierul pv_RO_PRSD_FINAL.csv, de pe https://prezenta.bec.ro/prezidentiale24112019/romania-pv-final.
 
-Date:
-2019-12-07
-
-Sistem de Coordonate:
+Sisteme de Coordonate:
 - EPSG:3844 - Pulkovo 1942(58) / Stereo70 - Projected
-(https://europe.foss4g.org/2014/slides/Daniel%20Urda%20-%20PROJ4%20Issues.The%20case%20of%20Romania2.pdf)
 - EPSG:4326 - WGS 84 - Geographic
 
-Procesare in QGIS 3.8.3-Zanzibar:
-- Agregarea datelor din pv_RO_PRSD_FINAL pe Siruta, în Spatialite
-- Join între Unitate_administrativa_UAT și pv_RO_PRSD_FINAL pe Siruta = natCode
-- Constatare elemente fără date electorale în urma join-ului
+Metode:
+  Procesarea datelor a fost făcută în QGIS 3.8.3-Zanzibar și în Spatialite (tot prin QGIS).
+  Au fost descărcate datele geografice și cele electorale, apoi s-a trecut la agregarea rezultatelor electorale la nivel de UAT (deoarece erau la nivel de secție de votare), pentru a putea face legătura între cele două seturi de date.
+  Gruparea datelor din tabelul pv_RO_PRSD_FINAL s-a făcut pe câmpul Siruta, în Spatialite, și a fost creat un view temporar pv_RO_UAT_VIEW.
+  A urmat Join-ul între fișierul Unitate_administrativa_UAT și pv_RO_UAT_VIEW, pe Siruta = natCode.
+  Au rezultat înregistrări fără date electorale în urma Join-ului, a urmat inspectarea cauzelor.
+  S-a constatat că:
     În pv_RO_PRSD_FINAL, sectoarele Bucureștiului au Siruta 179132, orașul Băneasa din Constanța are Siruta 63171
     În Unitate_administrativa_UAT:
         BUCUREŞTI SECTORUL 1: 179141
@@ -41,11 +38,20 @@ Procesare in QGIS 3.8.3-Zanzibar:
         BUCUREŞTI SECTORUL 5: 179187
         BUCUREŞTI SECTORUL 6: 179196
         BĂNEASA: 61069
-- Reparare lipsă date prin tabel intermediar pv_RO_UAT_MOD, cu câmp Siruta_Mod în care updatez Siruta 
-pentru elementele cu probleme, apoi din nou agregare și join cu Unitate_administrativa_UAT
-- Adăugare camp pv_siruta in care sunt trecute codurile pe care le au poligoanele cu probleme în pv_RO_PRSD_FINAL
-- Rezultă 3186 rânduri populate complet
-- QA round 2 pe https://prezenta.bec.ro/prezidentiale24112019/romania-precincts</abstract>
+  Problema a fost remediată prin folosirea unui câmp intermediar, Siruta_Mod. A fost creat un tabel intermediar din pv_RO_UAT_VIEW, pv_RO_UAT_MOD, a fost adăugat un câmp Siruta_Mod și updatat din Siruta, dar pentru București și Băneasa au fost inserate codurile de mai sus.
+  S-a refacut Join-ul cu Unitate_administrativa_UAT, de data asta cu pv_RO_UAT_MOD, și au rezultat 3186 rânduri populate complet.
+
+Rezultate:
+  Fișierul rezultat în urma Join-ului a fost exportat ca ESRI shapefile, cu numele UAT_elections_round_2, EPSG 3844, și encoding UTF8.
+  În final, a fost adăugat un nou câmp pv_siruta în care sunt trecute pentru București și Băneasa codurile Siruta originale din pv_RO_PRSD_FINAL.
+  Rezultatele au fost verificate prin query-uri în Spatialite și compararea cu rezultatele finale și cele la nivel de UAT de pe https://prezenta.bec.ro.
+
+Alte considerente:
+  S-a ales agregarea datelor electorale la nivel de Siruta (natCode) deoarece s-a urmat structura din fișierul geografic de pe ANCPI, și s-a dorit folosirea unui nivel de detalii mai mare, de unde se pot generaliza datele, dacă este nevoie.
+  Se putea folosi și agregarea la nivel de 'Siruta' ca în fișierul cu date electorale, folosind sectoarele Bucureștiului nediferențiate, prin dizolvarea geometriilor corespunzătoare din fișierul geografic. 
+  De asemenea, se putea folosi și agregarea la nivel de 'Cod birou electoral', iar atunci am fi dizolvat geometriile la nivel de județ, păstrând sectoarele Bucureștiului nedizolvate.
+  Putem ajunge la cele două nivele de generalizare de mai sus și pornind de la fișierul UAT_elections_round_2.
+  </abstract>
   <keywords vocabulary="gmd:topicCategory">
     <keyword>Boundaries</keyword>
     <keyword>Intelligence Military</keyword>
@@ -67,6 +73,7 @@ pentru elementele cu probleme, apoi din nou agregare și join cu Unitate_adminis
   <fees></fees>
   <rights>Date realizate de ANCPI</rights>
   <rights>Date realizate de BEC</rights>
+  <rights>Licența pentru o Guvenare Deschisă</rights>
   <license>Creative Commons Attribution 4.0</license>
   <encoding></encoding>
   <crs>
@@ -82,7 +89,7 @@ pentru elementele cu probleme, apoi din nou agregare și join cu Unitate_adminis
     </spatialrefsys>
   </crs>
   <extent>
-    <spatial dimensions="2" crs="EPSG:3844" maxx="870651.94990000000689179" maxz="0" minz="0" miny="235541.25990000000456348" maxy="753224.54989999998360872" minx="134106.26920000000973232"/>
+    <spatial dimensions="2" crs="EPSG:3844" maxx="870675.32620000001043081" maxz="0" minz="0" miny="235511.51379999998607673" maxy="753193.36759999999776483" minx="134131.84779999998863786"/>
     <temporal>
       <period>
         <start></start>
