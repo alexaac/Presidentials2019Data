@@ -51,6 +51,8 @@ Detalii despre proces:
 https://blog.maptheclouds.com/ro/tutoriale/perspectiva-spatiala-alegeri
 
 
+
+
 ## Romania 2019 Presidential Elections - Geographic data at UAT level
 
 Data sources:
