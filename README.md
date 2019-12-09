@@ -16,6 +16,9 @@ Fișiere utilizate:
 Autor:
 Cristina Alexa
 
+Date:
+2019-12-07
+
 Sistem de Coordonate:
 - EPSG:3844 - Pulkovo 1942(58) / Stereo70 - Projected
 (https://europe.foss4g.org/2014/slides/Daniel%20Urda%20-%20PROJ4%20Issues.The%20case%20of%20Romania2.pdf)
