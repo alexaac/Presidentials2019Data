@@ -27,13 +27,13 @@ Data: 2019-12-07
   S-a constatat că:  
     În pv_RO_PRSD_FINAL, sectoarele Bucureștiului au Siruta 179132, orașul Băneasa din Constanța are Siruta 63171  
     În Unitate_administrativa_UAT:  
-        BUCUREŞTI SECTORUL 1: 179141  
-        BUCUREŞTI SECTORUL 2: 179150  
-        BUCUREŞTI SECTORUL 3: 179169  
-        BUCUREŞTI SECTORUL 4: 179178  
-        BUCUREŞTI SECTORUL 5: 179187  
-        BUCUREŞTI SECTORUL 6: 179196  
-        BĂNEASA: 61069  
+        - BUCUREŞTI SECTORUL 1: 179141  
+        - BUCUREŞTI SECTORUL 2: 179150  
+        - BUCUREŞTI SECTORUL 3: 179169  
+        - BUCUREŞTI SECTORUL 4: 179178  
+        - BUCUREŞTI SECTORUL 5: 179187  
+        - BUCUREŞTI SECTORUL 6: 179196  
+        - BĂNEASA: 61069  
   Problema a fost remediată prin folosirea unui câmp intermediar, Siruta_Mod. A fost creat un tabel intermediar din pv_RO_UAT_VIEW, pv_RO_UAT_MOD, a fost adăugat un câmp Siruta_Mod și updatat din Siruta, dar pentru București și Băneasa au fost inserate codurile de mai sus.  
   S-a refacut Join-ul cu Unitate_administrativa_UAT, de data asta cu pv_RO_UAT_MOD, și au rezultat 3186 rânduri populate complet.  
 
@@ -81,13 +81,13 @@ Date: 2019-12-07
   It was found that:  
     In pv_RO_PRSD_FINAL, Bucharest sectors have Siruta 179132, Băneasa city from Constanța has Siruta 63171  
     In Unitate_administrativa_UAT:  
-      BUCUREŞTI SECTORUL 1: 179141  
-      BUCUREŞTI SECTORUL 2: 179150  
-      BUCUREŞTI SECTORUL 3: 179169  
-      BUCUREŞTI SECTORUL 4: 179178  
-      BUCUREŞTI SECTORUL 5: 179187  
-      BUCUREŞTI SECTORUL 6: 179196  
-      BĂNEASA: 61069  
+      - BUCUREŞTI SECTORUL 1: 179141  
+      - BUCUREŞTI SECTORUL 2: 179150  
+      - BUCUREŞTI SECTORUL 3: 179169  
+      - BUCUREŞTI SECTORUL 4: 179178  
+      - BUCUREŞTI SECTORUL 5: 179187  
+      - BUCUREŞTI SECTORUL 6: 179196  
+      - BĂNEASA: 61069  
   The issue was solved by using an intermediate field, Siruta_Mod. An intermediary table was created from pv_RO_UAT_VIEW, pv_RO_UAT_MOD, a field Siruta_Mod was added and updated from Siruta, but for Bucharest and Băneasa the codes above were inserted.  
   The Join with Unitate_administrativa_UAT was made again, this time with pv_RO_UAT_MOD, and there have resulted 3186 completely populated rows.  
 
